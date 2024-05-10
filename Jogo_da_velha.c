@@ -1,5 +1,9 @@
 #include <stdio.h>
 
+#define GREEN   "\x1b[32m"//Verde
+#define RESET   "\x1b[0m"//Voltar para cor padrão ao sair de seleção
+#define RED     "\x1b[31m"//Vermelho
+
 char tabuleiro[3][3]; // Tabuleiro do jogo
 
 //Função para inicializar o tabuleiro com espaços em branco
@@ -99,9 +103,15 @@ int main() {
     imprimir_tabuleiro();
 
     if(vencedor == 'E') {
-        printf("Empate!\n");
+    	sleep(1);
+        printf("%sEmpate!%s\n",RED, RESET);
     } else {
-        printf("Parabens, jogador %c! Voce ganhou!\n", vencedor);
+    	system("cls");
+    	sleep(1);
+        printf("%sParabens, jogador %c! Voce ganhou!%s\n",GREEN, vencedor, RESET);
+        imprimir_tabuleiro();
+    	return 0;
     }
+    
     return 0;
 }
