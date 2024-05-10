@@ -4,13 +4,13 @@ char tabuleiro[3][3]; // Tabuleiro do jogo
 
 //Função para inicializar o tabuleiro com espaços em branco
 void inicializar_tabuleiro() {
-    for(int i = 0; i < 3; i++) {
-        for(int j = 0; j < 3; j++) {
+	int i, j;
+    for(i = 0; i < 3; i++) {
+        for(j = 0; j < 3; j++) {
             tabuleiro[i][j] = ' ';
         }
     }
 }
-
 //Função para imprimir o tabuleiro atual
 void imprimir_tabuleiro() {
     printf("\n");
@@ -21,18 +21,18 @@ void imprimir_tabuleiro() {
     printf(" %c | %c | %c \n", tabuleiro[2][0], tabuleiro[2][1], tabuleiro[2][2]);
     printf("\n");
 }
-
 //Função para verificar se alguém ganhou
 char verificar_vitoria() {
+	int i, j;
     //Verificar linhas
-    for(int i = 0; i < 3; i++) {
+    for(i = 0; i < 3; i++) {
         if(tabuleiro[i][0] != ' ' && tabuleiro[i][0] == tabuleiro[i][1] && tabuleiro[i][0] == tabuleiro[i][2]) {
             return tabuleiro[i][0];
         }
     }
 
     //Verificar colunas
-    for(int i = 0; i < 3; i++) {
+    for(i = 0; i < 3; i++) {
         if(tabuleiro[0][i] != ' ' && tabuleiro[0][i] == tabuleiro[1][i] && tabuleiro[0][i] == tabuleiro[2][i]) {
             return tabuleiro[0][i];
         }
@@ -48,8 +48,8 @@ char verificar_vitoria() {
 
     //Verificar se deu velha
     int empate = 1;
-    for(int i = 0; i < 3; i++) {
-        for(int j = 0; j < 3; j++) {
+    for(i = 0; i < 3; i++) {
+        for(j = 0; j < 3; j++) {
             if(tabuleiro[i][j] == ' ') {
                 empate = 0;
                 break;
@@ -62,7 +62,6 @@ char verificar_vitoria() {
 
     return ' ';//Jogo continua
 }
-
 //Função principal
 int main() {
     int linha, coluna;
@@ -97,7 +96,6 @@ int main() {
             jogador_atual = 'X';
         }
     }
-
     imprimir_tabuleiro();
 
     if(vencedor == 'E') {
@@ -105,6 +103,5 @@ int main() {
     } else {
         printf("Parabens, jogador %c! Voce ganhou!\n", vencedor);
     }
-
     return 0;
 }
